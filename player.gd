@@ -51,25 +51,18 @@ func update_animations(direction):
 	if is_attacking: return
 
 	if is_on_floor():
-		# Di Lantai
 		if direction == 0:
 			sprite.play("idle")
 		else:
 			sprite.play("run")
 	else:
-		# Di Udara
 		if velocity.y < 0:
-			# Sedang naik ke atas (melompat)
 			sprite.play("jump")
 		else:
-			# Sedang turun ke bawah (jatuh)
-			sprite.play("fall") # Pastikan kamu punya animasi "fall" di SpriteFrames
+			sprite.play("fall") 
 
-# --- FUNGSI SERANGAN ACAK ---
 func attack_sequence():
 	is_attacking = true
-	
-	# Pilih acak attack1, attack2, attack3
 	var random_attack_index = randi_range(1, 3)
 	var attack_name = "attack" + str(random_attack_index)
 	
