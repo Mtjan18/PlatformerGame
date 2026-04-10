@@ -621,7 +621,7 @@ animations = [{
 height = 42.0
 
 [node name="Player" type="CharacterBody2D" unique_id=736466020]
-scale = Vector2(2, 2)
+floor_snap_length = 20.0
 script = ExtResource("1_dw050")
 
 [node name="PlayerSprite2D" type="AnimatedSprite2D" parent="." unique_id=1509465033]
@@ -635,4 +635,5 @@ position = Vector2(0, -21)
 shape = SubResource("CapsuleShape2D_feeoa")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1760121536]
+offset = Vector2(0, -50)
 zoom = Vector2(2, 2)

@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://cemokc6tsrcy3"]
+
+[ext_resource type="Texture2D" uid="uid://2eqlpk6t4fft" path="res://Pixel Adventure 1/Terrain/Terrain (16x16).png" id="1_qiem3"]
+
+[sub_resource type="Animation" id="Animation_bf3um"]
+length = 6.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D/platform_gerak/Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.9666667, 6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(2861, 407), Vector2(3400, 407), Vector2(2861, 407)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D/platform_gerak2/Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2.9666667, 6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(4200, 407), Vector2(3535, 407), Vector2(4200, 407)]
+}
+
+[sub_resource type="Animation" id="Animation_huihk"]
+resource_name = "platform_bergerak"
+length = 6.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D/platform_gerak/Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3.07),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(2861, 407), Vector2(3315, 409)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tw3kd"]
+_data = {
+&"RESET": SubResource("Animation_bf3um"),
+&"platform_bergerak": SubResource("Animation_huihk")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_huihk"]
+size = Vector2(72, 16)
+
+[node name="platform_gerak" type="AnimatableBody2D" unique_id=797954442]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2020594529]
+root_node = NodePath("../../..")
+libraries/ = SubResource("AnimationLibrary_tw3kd")
+autoplay = &"RESET"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=458218561]
+position = Vector2(2861, 407)
+scale = Vector2(1.5, 1)
+texture = ExtResource("1_qiem3")
+region_enabled = true
+region_rect = Rect2(192, 0, 48, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=676443911]
+position = Vector2(2861, 407)
+shape = SubResource("RectangleShape2D_huihk")
