@@ -4,11 +4,11 @@ extends CharacterBody2D
 # 1. VARIABEL SETTINGS
 # ==========================================
 @export var speed = 150.0
-@export var wander_speed = 50.0 # Kecepatan saat patroli (lebih lambat dari mengejar)
-@export var wander_range = 100.0 # Jarak maksimal patroli dari titik awal
+@export var wander_speed = 50.0 
+@export var wander_range = 100.0 
 @export var detection_range = 300.0
 @export var attack_range = 50.0
-@export var health = 2
+@export var health = 3
 
 # ==========================================
 # 2. REFERENSI NODE & STATE

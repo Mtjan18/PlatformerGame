@@ -17,6 +17,7 @@
 [ext_resource type="Script" uid="uid://bq37feyamqn4r" path="res://zona_duri.gd" id="14_a80n7"]
 [ext_resource type="PackedScene" uid="uid://cvquxevrngpuu" path="res://npc.tscn" id="16_hgfd7"]
 [ext_resource type="PackedScene" uid="uid://y833ryrt73md" path="res://forest_enemy.tscn" id="17_hgfd7"]
+[ext_resource type="Script" uid="uid://c0xunj5jtbksj" path="res://pintu.gd" id="18_0p3pg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_huihk"]
 texture = ExtResource("4_4y83t")
@@ -1590,8 +1591,11 @@ size = Vector2(183, 13)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0p3pg"]
 size = Vector2(121, 12)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k8rgi"]
+size = Vector2(20, 157)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a80n7"]
-size = Vector2(35.75, 62.5)
+size = Vector2(32.625, 58)
 
 [node name="HUTAN" type="Node2D" unique_id=2137279233]
 texture_filter = 1
@@ -1984,6 +1988,7 @@ shape = SubResource("RectangleShape2D_3je4o")
 
 [node name="ZonaDuri" type="Area2D" parent="Duri" unique_id=2051040489]
 position = Vector2(4282, 494)
+collision_mask = 3
 script = ExtResource("14_a80n7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Duri/ZonaDuri" unique_id=1907395117]
@@ -1992,6 +1997,7 @@ shape = SubResource("RectangleShape2D_qp4j6")
 
 [node name="ZonaDuri2" type="Area2D" parent="Duri" unique_id=737927822]
 position = Vector2(4969, 471)
+collision_mask = 3
 script = ExtResource("14_a80n7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Duri/ZonaDuri2" unique_id=715731241]
@@ -2000,6 +2006,7 @@ shape = SubResource("RectangleShape2D_4y83t")
 
 [node name="ZonaDuri3" type="Area2D" parent="Duri" unique_id=1786189124]
 position = Vector2(5147, 279)
+collision_mask = 3
 script = ExtResource("14_a80n7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Duri/ZonaDuri3" unique_id=1663515885]
@@ -2008,6 +2015,7 @@ shape = SubResource("RectangleShape2D_n2pve")
 
 [node name="ZonaDuri4" type="Area2D" parent="Duri" unique_id=1563113520]
 position = Vector2(5147, 279)
+collision_mask = 3
 script = ExtResource("14_a80n7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Duri/ZonaDuri4" unique_id=300356241]
@@ -2017,6 +2025,7 @@ shape = SubResource("RectangleShape2D_r0vw1")
 
 [node name="ZonaDuri5" type="Area2D" parent="Duri" unique_id=1951045512]
 position = Vector2(4997, 299)
+collision_mask = 3
 script = ExtResource("14_a80n7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Duri/ZonaDuri5" unique_id=309291027]
@@ -2026,6 +2035,7 @@ shape = SubResource("RectangleShape2D_hgfd7")
 
 [node name="ZonaDuri6" type="Area2D" parent="Duri" unique_id=837071906]
 position = Vector2(5051, 196)
+collision_mask = 3
 script = ExtResource("14_a80n7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Duri/ZonaDuri6" unique_id=265642141]
@@ -2055,10 +2065,18 @@ position = Vector2(8499, 332)
 [node name="ForestEnemy6" parent="Enemy" unique_id=614694879 instance=ExtResource("17_hgfd7")]
 position = Vector2(9028, 356)
 
-[node name="Pintu" type="Area2D" parent="." unique_id=1929639257]
+[node name="QuestBarrier" type="StaticBody2D" parent="." unique_id=977609896 groups=["tembok_quest"]]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Pintu" unique_id=58158793]
-position = Vector2(9424.125, 480.25)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="QuestBarrier" unique_id=425649580]
+position = Vector2(774, 388.5)
+shape = SubResource("RectangleShape2D_k8rgi")
+
+[node name="Pintu" type="Area2D" parent="." unique_id=754783781]
+collision_mask = 2
+script = ExtResource("18_0p3pg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pintu" unique_id=1586131441]
+position = Vector2(9423.6875, 477)
 shape = SubResource("RectangleShape2D_a80n7")
 
 [connection signal="body_entered" from="Air/ZonaBerbahaya" to="Air/ZonaBerbahaya" method="_on_body_entered"]
@@ -2068,3 +2086,4 @@ shape = SubResource("RectangleShape2D_a80n7")
 [connection signal="body_entered" from="Duri/ZonaDuri4" to="Duri/ZonaDuri4" method="_on_body_entered"]
 [connection signal="body_entered" from="Duri/ZonaDuri5" to="Duri/ZonaDuri5" method="_on_body_entered"]
 [connection signal="body_entered" from="Duri/ZonaDuri6" to="Duri/ZonaDuri6" method="_on_body_entered"]
+[connection signal="body_entered" from="Pintu" to="Pintu" method="_on_body_entered"]

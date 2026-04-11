@@ -58,6 +58,7 @@ outline_size = 2
 outline_color = Color(0, 0, 0, 1)
 
 [node name="NPC" type="CharacterBody2D" unique_id=680732110]
+collision_mask = 3
 script = ExtResource("1_mcvl2")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=111609717]
@@ -67,22 +68,24 @@ sprite_frames = SubResource("SpriteFrames_slxoh")
 animation = &"talk"
 autoplay = "idle"
 frame_progress = 0.2890163
+flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1049528267]
 position = Vector2(-3, 17.5)
 shape = SubResource("RectangleShape2D_bc6q4")
 
 [node name="InteractionArea" type="Area2D" parent="." unique_id=1563400129]
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" unique_id=1657900246]
 position = Vector2(-3, -1)
 shape = SubResource("CircleShape2D_mcvl2")
 
 [node name="SpeechBubble" type="Label" parent="." unique_id=453013336]
-offset_left = -139.0
-offset_top = -103.0
-offset_right = 140.0
-offset_bottom = -50.0
+offset_left = -198.0
+offset_top = -132.0
+offset_right = 199.0
+offset_bottom = -42.0
 text = "Halo!"
 label_settings = SubResource("LabelSettings_mcvl2")
 horizontal_alignment = 1

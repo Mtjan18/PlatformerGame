@@ -364,7 +364,8 @@ radius = 16.0
 radius = 17.029387
 
 [node name="ForestEnemy" type="CharacterBody2D" unique_id=1573157089]
-collision_layer = 2
+collision_layer = 4
+collision_mask = 3
 script = ExtResource("1_f4n32")
 
 [node name="ForestSprite2D" type="AnimatedSprite2D" parent="." unique_id=686247385]
@@ -380,6 +381,8 @@ position = Vector2(0, -16)
 shape = SubResource("CapsuleShape2D_j6ky7")
 
 [node name="DetectionArea" type="Area2D" parent="." unique_id=313677591]
+collision_layer = 0
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea" unique_id=1882923461]
 position = Vector2(0, -16)

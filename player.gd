@@ -4,7 +4,7 @@ extends CharacterBody2D
 # 1. VARIABEL SETTINGS (Bisa diubah di Inspector)
 # ==========================================
 @export_group("Movement")
-@export var speed = 400.0        
+@export var speed = 300.0        
 @export var jump_velocity = -350.0 
 @export var gravity_multiplier = 1.0 
 
@@ -26,6 +26,7 @@ extends CharacterBody2D
 var current_health = 3
 var is_attacking = false
 var is_hurt = false
+var is_locked = false
 
 # ==========================================
 # 4. FUNGSI BAWAAN GODOT
@@ -37,8 +38,21 @@ func _ready():
 	update_health_ui()
 	# Matikan pedang saat game baru mulai
 	hitbox_collision.set_deferred("disabled", true)
+	
+	$TutorialBubble.visible = true
+	await get_tree().create_timer(3).timeout
+	$TutorialBubble.visible = false
+	
 
 func _physics_process(delta):
+	if is_locked:
+		velocity.x = 0
+		# Tetap jalankan gravitasi agar tidak melayang jika terkunci di udara
+		if not is_on_floor():
+			velocity += get_gravity() * gravity_multiplier * delta
+		move_and_slide()
+		update_animations(0) # Pasang animasi idle
+		return
 	# Jika sedang terluka, kunci kontrol dan terapkan gravitasi (efek terpental)
 	if is_hurt:
 		if not is_on_floor():
