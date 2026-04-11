@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://cpi2yq7w2dkcu"]
+[gd_scene format=3 uid="uid://gi66akrxn6qj"]
 
 [ext_resource type="Script" uid="uid://dbk2igs0gqsne" path="res://player.gd" id="1_dw050"]
 [ext_resource type="Texture2D" uid="uid://ckhq2gt5yovb7" path="res://Sprite/CharacterPack-Version1/Character-Weapon/Character-Attack-1.png" id="2_b26j0"]
@@ -621,7 +621,6 @@ animations = [{
 height = 42.0
 
 [node name="Player" type="CharacterBody2D" unique_id=736466020]
-floor_snap_length = 20.0
 script = ExtResource("1_dw050")
 
 [node name="PlayerSprite2D" type="AnimatedSprite2D" parent="." unique_id=1509465033]
@@ -635,5 +634,7 @@ position = Vector2(0, -21)
 shape = SubResource("CapsuleShape2D_feeoa")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1760121536]
-offset = Vector2(0, -50)
 zoom = Vector2(2, 2)
+limit_left = 0
+limit_top = 0
+limit_bottom = 507

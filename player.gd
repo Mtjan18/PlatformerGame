@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
 # --- VARIABEL YANG BISA DIUBAH DI INSPECTOR ---
-@export var speed = 250.0        # Kecepatan jalan
-@export var jump_velocity = -430.0 # Kekuatan lompat (semakin minus, semakin tinggi)
+@export var speed = 400.0        # Kecepatan jalan
+@export var jump_velocity = -250.0 # Kekuatan lompat (semakin minus, semakin tinggi)
 @export var gravity_multiplier = 1.0 # Pengali gravitasi (opsional)
 
 # --- REFERENSI KE NODE ANAK ---
@@ -44,9 +44,6 @@ func _physics_process(delta):
 
 	# 7. Eksekusi Pergerakan Akhir
 	move_and_slide()
-	
-	# 8. Cek apakah kena duri setelah bergerak
-	check_spike_collision()
 
 # --- FUNGSI KHUSUS UNTUK ANIMASI ---
 func update_animations(direction):
@@ -75,29 +72,3 @@ func attack_sequence():
 	await sprite.animation_finished
 	
 	is_attacking = false
-	
-	
-# --- DETEKSI DURI/SPIKE ---
-func check_spike_collision():
-	# Pastikan nama node di sini sama dengan nama di Scene Tree kamu (misal: "spike_tilemap")
-	var spike_map = get_parent().get_node("spike_tilemap") 
-	
-	if spike_map:
-		# 1. Ambil posisi ubin (Cell) berdasarkan posisi ksatria
-		var tile_pos = spike_map.local_to_map(global_position)
-		
-		# 2. Ambil data ubin (Gunakan 2 argumen untuk TileMapLayer atau 3 untuk TileMap lama)
-		# Untuk Godot 4.3+, biasanya cukup: spike_map.get_cell_tile_data(tile_pos)
-		# Jika error 3 argumen muncul, gunakan ini:
-		var tile_data = spike_map.get_cell_tile_data(0, tile_pos) # Angka 0 adalah Layer ke-1
-		# 3. Cek apakah ubin tersebut berbahaya
-		if tile_data:
-			var is_danger = tile_data.get_custom_data("is_dangerous")
-			if is_danger:
-				die()
-
-func die():
-	print("Ksatria terkena duri!")
-	# Restart level atau kurangi darah di sini
-	get_tree().reload_current_scene()
-	
