@@ -7,6 +7,8 @@ var player_node = null
 var quest_diberikan = false
 
 func _ready():
+	
+	$Sprite2D.flip_h = true
 	speech_bubble.visible = false
 
 # Hubungkan signal 'body_entered' dari Area2D ke fungsi ini
@@ -33,6 +35,8 @@ func _process(delta):
 		if not quest_diberikan:
 			# Ubah teks di atas kepala NPC
 			speech_bubble.text = "Cari Genta Suara di\ndalam reruntuhan!"
+			
+			$Sprite2D.play("talk")
 			
 			# Kirim quest ke Player
 			player_node.terima_quest("Temukan Artefak Genta Suara")

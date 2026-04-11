@@ -1590,7 +1590,11 @@ size = Vector2(183, 13)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0p3pg"]
 size = Vector2(121, 12)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a80n7"]
+size = Vector2(35.75, 62.5)
+
 [node name="HUTAN" type="Node2D" unique_id=2137279233]
+texture_filter = 1
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="." unique_id=1551002012]
 
@@ -2034,7 +2038,28 @@ position = Vector2(716, 448)
 [node name="Enemy" type="Node2D" parent="." unique_id=713003080]
 
 [node name="ForestEnemy" parent="Enemy" unique_id=1573157089 instance=ExtResource("17_hgfd7")]
-position = Vector2(1375, 463)
+position = Vector2(1375, 445)
+
+[node name="ForestEnemy2" parent="Enemy" unique_id=162051465 instance=ExtResource("17_hgfd7")]
+position = Vector2(3423, 458)
+
+[node name="ForestEnemy3" parent="Enemy" unique_id=955594005 instance=ExtResource("17_hgfd7")]
+position = Vector2(4706, 438)
+
+[node name="ForestEnemy4" parent="Enemy" unique_id=819703867 instance=ExtResource("17_hgfd7")]
+position = Vector2(6586, 381)
+
+[node name="ForestEnemy5" parent="Enemy" unique_id=1727219539 instance=ExtResource("17_hgfd7")]
+position = Vector2(8499, 332)
+
+[node name="ForestEnemy6" parent="Enemy" unique_id=614694879 instance=ExtResource("17_hgfd7")]
+position = Vector2(9028, 356)
+
+[node name="Pintu" type="Area2D" parent="." unique_id=1929639257]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pintu" unique_id=58158793]
+position = Vector2(9424.125, 480.25)
+shape = SubResource("RectangleShape2D_a80n7")
 
 [connection signal="body_entered" from="Air/ZonaBerbahaya" to="Air/ZonaBerbahaya" method="_on_body_entered"]
 [connection signal="body_entered" from="Duri/ZonaDuri" to="Duri/ZonaDuri" method="_on_body_entered"]

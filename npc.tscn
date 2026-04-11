@@ -5,6 +5,10 @@
 [ext_resource type="Texture2D" uid="uid://vdhieus5hfmk" path="res://Sprite/NPC/Idle2/2.png" id="2_bc6q4"]
 [ext_resource type="Texture2D" uid="uid://p7tsvjbrskqs" path="res://Sprite/NPC/Idle2/3.png" id="3_mcvl2"]
 [ext_resource type="Texture2D" uid="uid://dxeh78771ys1n" path="res://Sprite/NPC/Idle2/4.png" id="4_d61ma"]
+[ext_resource type="Texture2D" uid="uid://dvylxistbv0q1" path="res://Sprite/NPC/Speak2/1.png" id="6_l64hl"]
+[ext_resource type="Texture2D" uid="uid://cvo5ujftm87cc" path="res://Sprite/NPC/Speak2/2.png" id="7_215dd"]
+[ext_resource type="Texture2D" uid="uid://sh486qgacgwl" path="res://Sprite/NPC/Speak2/3.png" id="8_p5bpe"]
+[ext_resource type="Texture2D" uid="uid://ci1pqaa2febjn" path="res://Sprite/NPC/Speak2/4.png" id="9_upjdb"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_slxoh"]
 animations = [{
@@ -23,6 +27,23 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_l64hl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_215dd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_p5bpe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_upjdb")
+}],
+"loop": true,
+"name": &"talk",
 "speed": 5.0
 }]
 
@@ -43,9 +64,9 @@ script = ExtResource("1_mcvl2")
 position = Vector2(-1, -1)
 scale = Vector2(0.5345745, 0.5975275)
 sprite_frames = SubResource("SpriteFrames_slxoh")
-animation = &"idle"
+animation = &"talk"
 autoplay = "idle"
-frame_progress = 0.91203016
+frame_progress = 0.2890163
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1049528267]
 position = Vector2(-3, 17.5)

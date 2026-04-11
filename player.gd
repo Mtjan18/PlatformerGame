@@ -152,8 +152,7 @@ func die():
 	sprite.play("die") # Pastikan kamu punya animasi "die"
 	await sprite.animation_finished
 	
-	print("Marchel Tewas!")
-	get_tree().reload_current_scene()
+	get_tree().change_scene_to_file("res://game_over.tscn")
 
 # ==========================================
 # 7. FUNGSI INTERAKSI (NPC/QUEST)

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://daykpbjdcnh8o"]
 
 [ext_resource type="Texture2D" uid="uid://ck5pm14o73dq7" path="res://Background_0.png" id="1_jwbto"]
+[ext_resource type="Script" uid="uid://d31xx1dcri5bn" path="res://game_over.gd" id="1_yxx3c"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
 content_margin_left = 32.0
@@ -138,6 +139,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_yxx3c")
 
 [node name="Background" type="TextureRect" parent="." unique_id=700000002]
 layout_mode = 1
@@ -299,3 +301,6 @@ theme_override_font_sizes/font_size = 14
 text = "v1.0.0"
 horizontal_alignment = 2
 vertical_alignment = 2
+
+[connection signal="pressed" from="MenuPanel/MarginContainer/MenuOptions/CobaLagi" to="." method="_on_ulangi_pressed"]
+[connection signal="pressed" from="MenuPanel/MarginContainer/MenuOptions/ButtonKeluar" to="." method="_on_keluar_pressed"]
