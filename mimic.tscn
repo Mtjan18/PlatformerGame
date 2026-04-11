@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://be8dbn2i2ohes"]
+
+[ext_resource type="Script" uid="uid://tg1i65bbtpx1" path="res://mimic.gd" id="1_vq8a1"]
+[ext_resource type="Texture2D" uid="uid://c1wkgg45j6qi5" path="res://Sprite/Mimic Enemy Asset Pack/Mimics/Chest Closed.png" id="2_xv2kv"]
+[ext_resource type="Texture2D" uid="uid://o52a0dkehovq" path="res://Sprite/Mimic Enemy Asset Pack/Mimics/Chest Mimic 1.png" id="3_lmn88"]
+[ext_resource type="Texture2D" uid="uid://d3fdhl7onhoj5" path="res://Sprite/Mimic Enemy Asset Pack/Mimics/Chest Mimic 2.png" id="4_qqvx0"]
+[ext_resource type="Texture2D" uid="uid://dp8x14fg2crj6" path="res://Sprite/Mimic Enemy Asset Pack/Mimics/Chest Mimic 3.png" id="5_4eubc"]
+[ext_resource type="Texture2D" uid="uid://dq0f2c4qk383f" path="res://Sprite/Mimic Enemy Asset Pack/Mimics/Chest Mimic Dead.png" id="6_3q0i1"]
+[ext_resource type="Texture2D" uid="uid://uxif4akvh31j" path="res://Sprite/Mimic Enemy Asset Pack/Mimics/Chest Open.png" id="7_m8mb7"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7to5c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_xv2kv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_lmn88")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_qqvx0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_4eubc")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_3q0i1")
+}],
+"loop": false,
+"name": &"dead",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_m8mb7")
+}],
+"loop": false,
+"name": &"open",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v2xm3"]
+size = Vector2(30, 18)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hd44b"]
+size = Vector2(30, 17)
+
+[node name="Mimic" type="CharacterBody2D" unique_id=2122787743]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_vq8a1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=780516748]
+sprite_frames = SubResource("SpriteFrames_7to5c")
+animation = &"open"
+autoplay = "attack"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1129370675]
+position = Vector2(0, 7)
+shape = SubResource("RectangleShape2D_v2xm3")
+
+[node name="Hurtbox" type="Area2D" parent="." unique_id=790959535 groups=["enemy_hurtbox"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=1917440776]
+position = Vector2(0, 6.5)
+shape = SubResource("RectangleShape2D_hd44b")

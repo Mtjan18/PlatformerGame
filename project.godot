@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="UTSGAME"
-run/main_scene="uid://y6a6bpxmhl40"
+run/main_scene="uid://ccyaa741l5u8b"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 

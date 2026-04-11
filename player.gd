@@ -124,9 +124,16 @@ func attack_sequence():
 # Saat pedang Player (Hitbox) mengenai Musuh (Hurtbox)
 func _on_hitbox_area_entered(area):
 	if area.is_in_group("enemy_hurtbox"):
-		# Cek apakah musuh punya fungsi take_damage agar game tidak crash
-		if area.get_parent().has_method("take_damage"):
-			area.get_parent().take_damage(1)
+		# Kita cari 'take_damage' di parent, kalau nggak ada, cari di kakeknya (owner)
+		var target = area.get_parent()
+		
+		if not target.has_method("take_damage"):
+			target = area.owner # 'owner' biasanya adalah root dari scene mimic tersebut
+			
+		if target != null and target.has_method("take_damage"):
+			target.take_damage(1)
+		else:
+			print("Waduh, tetep nggak ketemu fungsinya di: ", target.name)
 
 # ==========================================
 # 6. FUNGSI NYAWA & DAMAGE
