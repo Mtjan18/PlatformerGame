@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://daykpbjdcnh8o"]
 
-[ext_resource type="Texture2D" path="res://Background_0.png" id="1_jwbto"]
+[ext_resource type="Texture2D" uid="uid://ck5pm14o73dq7" path="res://Background_0.png" id="1_jwbto"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
 content_margin_left = 32.0

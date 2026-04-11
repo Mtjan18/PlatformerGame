@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://bpw2tbkqvuj0o" path="res://Sprite/CharacterPack-Version1/Character-Weapon/Character-run-weapon.png" id="7_bwjto"]
 [ext_resource type="Texture2D" uid="uid://njvoyhvqlq6h" path="res://Sprite/CharacterPack-Version1/Character-Weapon/Character-hurt.png" id="7_ivps1"]
 [ext_resource type="Texture2D" uid="uid://dwk6ujih63jeq" path="res://Sprite/CharacterPack-Version1/Character-Weapon/Character-walk.png" id="8_606se"]
+[ext_resource type="Texture2D" uid="uid://b2gp248c4hpec" path="res://Sprite/heart.png" id="12_ivps1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u1c27"]
 atlas = ExtResource("2_b26j0")
@@ -350,7 +351,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"attack1",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -376,7 +377,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"attack2",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -402,7 +403,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"attack3",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -620,14 +621,22 @@ animations = [{
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_feeoa"]
 height = 42.0
 
-[node name="Player" type="CharacterBody2D" unique_id=736466020]
+[sub_resource type="LabelSettings" id="LabelSettings_nvl01"]
+font_size = 9
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ivps1"]
+size = Vector2(30, 42)
+
+[node name="Player" type="CharacterBody2D" unique_id=736466020 groups=["Player"]]
 floor_snap_length = 20.0
 script = ExtResource("1_dw050")
 
 [node name="PlayerSprite2D" type="AnimatedSprite2D" parent="." unique_id=1509465033]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_s7jk6")
-animation = &"jump"
+animation = &"attack1"
 offset = Vector2(0, -32)
 
 [node name="PlayerShape2D" type="CollisionShape2D" parent="." unique_id=922803351]
@@ -637,3 +646,46 @@ shape = SubResource("CapsuleShape2D_feeoa")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1760121536]
 offset = Vector2(0, -20)
 zoom = Vector2(2, 2)
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=549949332]
+
+[node name="QuestLabel" type="Label" parent="HUD" unique_id=115974603]
+z_index = 4
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -146.0
+offset_bottom = 37.0
+grow_horizontal = 0
+label_settings = SubResource("LabelSettings_nvl01")
+horizontal_alignment = 1
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=2079731761]
+
+[node name="HeartContainer" type="HBoxContainer" parent="UI" unique_id=117554645]
+offset_left = 5.0
+offset_right = 76.0
+offset_bottom = 40.0
+
+[node name="Heart1" type="TextureRect" parent="UI/HeartContainer" unique_id=957005660]
+layout_mode = 2
+texture = ExtResource("12_ivps1")
+stretch_mode = 5
+
+[node name="Heart2" type="TextureRect" parent="UI/HeartContainer" unique_id=1019154907]
+layout_mode = 2
+texture = ExtResource("12_ivps1")
+stretch_mode = 5
+
+[node name="Heart3" type="TextureRect" parent="UI/HeartContainer" unique_id=963624388]
+layout_mode = 2
+texture = ExtResource("12_ivps1")
+stretch_mode = 5
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=616784760]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1848956855]
+position = Vector2(26, -21)
+shape = SubResource("RectangleShape2D_ivps1")
+
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

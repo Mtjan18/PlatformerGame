@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://y833ryrt73md"]
 
+[ext_resource type="Script" uid="uid://csilujpdwur3d" path="res://forest_enemy.gd" id="1_f4n32"]
 [ext_resource type="Texture2D" uid="uid://tj8b5kwnah62" path="res://Sprite/Forest_Monsters_FREE/Mushroom/Mushroom with VFX/Mushroom-Attack.png" id="1_ysgps"]
 [ext_resource type="Texture2D" uid="uid://bknbfmqp7f6o2" path="res://Sprite/Forest_Monsters_FREE/Mushroom/Mushroom with VFX/Mushroom-Die.png" id="2_f4n32"]
 [ext_resource type="Texture2D" uid="uid://erl0qas8ey4b" path="res://Sprite/Forest_Monsters_FREE/Mushroom/Mushroom with VFX/Mushroom-Hit.png" id="3_8imkj"]
@@ -221,7 +222,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"attack",
-"speed": 5.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -353,15 +354,50 @@ animations = [{
 radius = 15.0
 height = 32.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_8imkj"]
+radius = 240.03333
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rqxo4"]
+radius = 16.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_f4n32"]
+radius = 17.029387
+
 [node name="ForestEnemy" type="CharacterBody2D" unique_id=1573157089]
+collision_layer = 2
+script = ExtResource("1_f4n32")
 
 [node name="ForestSprite2D" type="AnimatedSprite2D" parent="." unique_id=686247385]
 texture_filter = 1
 position = Vector2(0, -32)
 sprite_frames = SubResource("SpriteFrames_5jh04")
-animation = &"idle"
-frame_progress = 0.6018876
+animation = &"attack"
+frame = 9
+frame_progress = 1.0
 
 [node name="ForestShape2D" type="CollisionShape2D" parent="." unique_id=1223211529]
 position = Vector2(0, -16)
 shape = SubResource("CapsuleShape2D_j6ky7")
+
+[node name="DetectionArea" type="Area2D" parent="." unique_id=313677591]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea" unique_id=1882923461]
+position = Vector2(0, -16)
+shape = SubResource("CircleShape2D_8imkj")
+
+[node name="AttackArea" type="Area2D" parent="." unique_id=287307271]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea" unique_id=1208326047]
+position = Vector2(0, -17)
+shape = SubResource("CircleShape2D_rqxo4")
+
+[node name="Hurtbox" type="Area2D" parent="." unique_id=1844683438 groups=["enemy_hurtbox"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=1767153226]
+position = Vector2(0, -17)
+shape = SubResource("CircleShape2D_f4n32")
+
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=1098981660]
+
+[connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]

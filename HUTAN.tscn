@@ -2,18 +2,21 @@
 
 [ext_resource type="Texture2D" uid="uid://cifdyaaxdftv6" path="res://Sprite/Final/Background_0.png" id="1_l6t7y"]
 [ext_resource type="Texture2D" uid="uid://be2gqlm4j3cv" path="res://Sprite/Final/Grass_background_2.png" id="2_3je4o"]
+[ext_resource type="Texture2D" uid="uid://cimlriktq0c02" path="res://Sprite/Final/Background_1.png" id="2_r0vw1"]
 [ext_resource type="Texture2D" uid="uid://brf7ksxjq148y" path="res://Sprite/Final/Grass_background_1.png" id="3_qp4j6"]
 [ext_resource type="Texture2D" uid="uid://gwef137fnjep" path="res://Sprite/Jungle Asset Pack/jungle tileset/jungle tileset.png" id="4_4y83t"]
 [ext_resource type="Texture2D" uid="uid://c4kreb1nahk1b" path="res://Sprite/Final/brush.png" id="5_n2pve"]
 [ext_resource type="Texture2D" uid="uid://dqwet5nhcefse" path="res://Tileset_Cave.png" id="6_r0vw1"]
 [ext_resource type="Texture2D" uid="uid://df3exjq20x8vm" path="res://sample - terrain-tiles-32x32.png" id="7_hgfd7"]
 [ext_resource type="Texture2D" uid="uid://bpuuxht5t11a0" path="res://Sprite/Final/Tiles.png" id="8_0p3pg"]
-[ext_resource type="PackedScene" path="res://platfrom_bergerak.tscn" id="9_a80n7"]
+[ext_resource type="PackedScene" uid="uid://cs4x70m48esky" path="res://platfrom_bergerak.tscn" id="9_a80n7"]
 [ext_resource type="Texture2D" uid="uid://k5xg5ugvf050" path="res://Water.png" id="10_k8rgi"]
 [ext_resource type="Texture2D" uid="uid://18ypgfou0sn3" path="res://Sprite/Final/Salt.png" id="11_6wvpj"]
 [ext_resource type="PackedScene" uid="uid://cpi2yq7w2dkcu" path="res://player.tscn" id="12_3je4o"]
-[ext_resource type="Script" path="res://zona_berbahaya.gd" id="13_qp4j6"]
-[ext_resource type="Script" path="res://zona_duri.gd" id="14_a80n7"]
+[ext_resource type="Script" uid="uid://b6o06hd4owf7h" path="res://zona_berbahaya.gd" id="13_qp4j6"]
+[ext_resource type="Script" uid="uid://bq37feyamqn4r" path="res://zona_duri.gd" id="14_a80n7"]
+[ext_resource type="PackedScene" uid="uid://cvquxevrngpuu" path="res://npc.tscn" id="16_hgfd7"]
+[ext_resource type="PackedScene" uid="uid://y833ryrt73md" path="res://forest_enemy.tscn" id="17_hgfd7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_huihk"]
 texture = ExtResource("4_4y83t")
@@ -1601,6 +1604,14 @@ scale = Vector2(1.0572916, 1.5996263)
 texture = ExtResource("1_l6t7y")
 centered = false
 
+[node name="Rumah" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1486160995]
+
+[node name="Rumah" type="Sprite2D" parent="ParallaxBackground/Rumah" unique_id=1686824892]
+position = Vector2(588, 13)
+scale = Vector2(1.0598959, 1.2821403)
+texture = ExtResource("2_r0vw1")
+centered = false
+
 [node name="Pohon" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1676758246]
 motion_scale = Vector2(0.5, 1)
 motion_mirroring = Vector2(600, 0)
@@ -1679,7 +1690,7 @@ format = 2
 layer_0/tile_data = PackedInt32Array(1770053, 0, 11, 1507910, 65536, 7, 1507914, 327680, 7, 1901134, 0, 13, 1114704, 131072, 1)
 
 [node name="Player" parent="." unique_id=736466020 instance=ExtResource("12_3je4o")]
-position = Vector2(4889, 470)
+position = Vector2(288, 453)
 
 [node name="Air" type="Node2D" parent="." unique_id=1568442418]
 
@@ -2016,6 +2027,14 @@ script = ExtResource("14_a80n7")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Duri/ZonaDuri6" unique_id=265642141]
 position = Vector2(6.5, 2)
 shape = SubResource("RectangleShape2D_0p3pg")
+
+[node name="NPC" parent="." unique_id=138108898 instance=ExtResource("16_hgfd7")]
+position = Vector2(716, 448)
+
+[node name="Enemy" type="Node2D" parent="." unique_id=713003080]
+
+[node name="ForestEnemy" parent="Enemy" unique_id=1573157089 instance=ExtResource("17_hgfd7")]
+position = Vector2(1375, 463)
 
 [connection signal="body_entered" from="Air/ZonaBerbahaya" to="Air/ZonaBerbahaya" method="_on_body_entered"]
 [connection signal="body_entered" from="Duri/ZonaDuri" to="Duri/ZonaDuri" method="_on_body_entered"]

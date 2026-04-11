@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://y6a6bpxmhl40"]
 
-[ext_resource type="Texture2D" path="res://Background_0.png" id="1_sn725"]
+[ext_resource type="Script" uid="uid://b625v1vnkjmh3" path="res://game_start.gd" id="1_dpf5s"]
+[ext_resource type="Texture2D" uid="uid://ck5pm14o73dq7" path="res://Background_0.png" id="1_sn725"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
 content_margin_left = 32.0
@@ -138,6 +139,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_dpf5s")
 
 [node name="Background" type="TextureRect" parent="." unique_id=1392927692]
 layout_mode = 1
@@ -285,3 +287,6 @@ theme_override_font_sizes/font_size = 14
 text = "v1.0.0"
 horizontal_alignment = 2
 vertical_alignment = 2
+
+[connection signal="pressed" from="MenuPanel/MarginContainer/MenuOptions/MulaiGame" to="." method="_on_mulai_game_pressed"]
+[connection signal="pressed" from="MenuPanel/MarginContainer/MenuOptions/ButtonKeluar" to="." method="_on_button_keluar_pressed"]
