@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://3f5bajf4iu1r"]
+[gd_scene format=3 uid="uid://ccyaa741l5u8b"]
 
 [ext_resource type="Texture2D" uid="uid://cifdyaaxdftv6" path="res://Sprite/Final/Background_0.png" id="1_l6t7y"]
 [ext_resource type="Texture2D" uid="uid://be2gqlm4j3cv" path="res://Sprite/Final/Grass_background_2.png" id="2_3je4o"]
@@ -8,12 +8,12 @@
 [ext_resource type="Texture2D" uid="uid://dqwet5nhcefse" path="res://Tileset_Cave.png" id="6_r0vw1"]
 [ext_resource type="Texture2D" uid="uid://df3exjq20x8vm" path="res://sample - terrain-tiles-32x32.png" id="7_hgfd7"]
 [ext_resource type="Texture2D" uid="uid://bpuuxht5t11a0" path="res://Sprite/Final/Tiles.png" id="8_0p3pg"]
-[ext_resource type="PackedScene" uid="uid://cs4x70m48esky" path="res://platfrom_bergerak.tscn" id="9_a80n7"]
+[ext_resource type="PackedScene" path="res://platfrom_bergerak.tscn" id="9_a80n7"]
 [ext_resource type="Texture2D" uid="uid://k5xg5ugvf050" path="res://Water.png" id="10_k8rgi"]
 [ext_resource type="Texture2D" uid="uid://18ypgfou0sn3" path="res://Sprite/Final/Salt.png" id="11_6wvpj"]
-[ext_resource type="PackedScene" uid="uid://gi66akrxn6qj" path="res://player.tscn" id="12_3je4o"]
-[ext_resource type="Script" uid="uid://b6o06hd4owf7h" path="res://zona_berbahaya.gd" id="13_qp4j6"]
-[ext_resource type="Script" uid="uid://bq37feyamqn4r" path="res://zona_duri.gd" id="14_a80n7"]
+[ext_resource type="PackedScene" uid="uid://cpi2yq7w2dkcu" path="res://player.tscn" id="12_3je4o"]
+[ext_resource type="Script" path="res://zona_berbahaya.gd" id="13_qp4j6"]
+[ext_resource type="Script" path="res://zona_duri.gd" id="14_a80n7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_huihk"]
 texture = ExtResource("4_4y83t")
