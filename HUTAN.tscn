@@ -16,10 +16,8 @@
 [ext_resource type="Script" uid="uid://b6o06hd4owf7h" path="res://zona_berbahaya.gd" id="13_qp4j6"]
 [ext_resource type="Script" uid="uid://bq37feyamqn4r" path="res://zona_duri.gd" id="14_a80n7"]
 [ext_resource type="PackedScene" uid="uid://cvquxevrngpuu" path="res://npc.tscn" id="16_hgfd7"]
-[ext_resource type="PackedScene" uid="uid://be8dbn2i2ohes" path="res://mimic.tscn" id="17_0p3pg"]
 [ext_resource type="PackedScene" uid="uid://y833ryrt73md" path="res://forest_enemy.tscn" id="17_hgfd7"]
 [ext_resource type="Script" path="res://pintu.gd" id="18_0p3pg"]
-[ext_resource type="PackedScene" uid="uid://chiu3mgnllu5t" path="res://item1.tscn" id="19_a80n7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_huihk"]
 texture = ExtResource("4_4y83t")
@@ -2080,11 +2078,6 @@ script = ExtResource("18_0p3pg")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pintu" unique_id=1586131441]
 position = Vector2(9423.6875, 477)
 shape = SubResource("RectangleShape2D_a80n7")
-
-[node name="Mimic" parent="." unique_id=128322690 instance=ExtResource("17_0p3pg")]
-position = Vector2(5364, 250)
-
-[node name="Item" parent="." unique_id=601214048 instance=ExtResource("19_a80n7")]
 
 [connection signal="body_entered" from="Air/ZonaBerbahaya" to="Air/ZonaBerbahaya" method="_on_body_entered"]
 [connection signal="body_entered" from="Duri/ZonaDuri" to="Duri/ZonaDuri" method="_on_body_entered"]
