@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://c4l7884111iok"]
+
+[ext_resource type="Texture2D" uid="uid://ocj2nkknkug4" path="res://Free/Demo/Bat.png" id="1_pb2o4"]
+[ext_resource type="Script" uid="uid://c611jnqr0rqqw" path="res://bat.gd" id="2_vobq3"]
+[ext_resource type="PackedScene" uid="uid://cooqedlk6ml0k" path="res://BatBullet.tscn" id="3_1tubu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tofr1"]
+atlas = ExtResource("1_pb2o4")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vobq3"]
+atlas = ExtResource("1_pb2o4")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1tubu"]
+atlas = ExtResource("1_pb2o4")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3tecl"]
+atlas = ExtResource("1_pb2o4")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jp0fn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tofr1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vobq3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1tubu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3tecl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Bat" type="AnimatedSprite2D" unique_id=723458679]
+texture_filter = 1
+position = Vector2(109, 64)
+sprite_frames = SubResource("SpriteFrames_jp0fn")
+autoplay = "default"
+frame_progress = 0.64803064
+script = ExtResource("2_vobq3")
+bullet_scene = ExtResource("3_1tubu")
+
+[node name="Timer" type="Timer" parent="." unique_id=96635412]
+wait_time = 2.0
+
+[node name="SpawnPoint" type="Marker2D" parent="." unique_id=65123600]
+position = Vector2(-3, 4)
+
+[connection signal="timeout" from="Timer" to="." method="_on_shoot_timer_timeout"]

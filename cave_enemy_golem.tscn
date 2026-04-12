@@ -1,9 +1,11 @@
 [gd_scene format=3 uid="uid://he14sx75v7y3"]
 
 [ext_resource type="Texture2D" uid="uid://qahv5xbq44i1" path="res://Sprite/Golems_Free_Version/Golem_1/Blue/White_Swoosh_VFX/Golem_1_attack.png" id="1_hekrv"]
+[ext_resource type="Script" uid="uid://cmsskfvlqpeyc" path="res://cave_enemy_golem.gd" id="1_ra4i7"]
 [ext_resource type="Texture2D" uid="uid://dy68r5ffvn35s" path="res://Sprite/Golems_Free_Version/Golem_1/Blue/White_Swoosh_VFX/Golem_1_die.png" id="2_ho2cc"]
 [ext_resource type="Texture2D" uid="uid://boha5lrafacow" path="res://Sprite/Golems_Free_Version/Golem_1/Blue/White_Swoosh_VFX/Golem_1_hurt.png" id="3_ra4i7"]
 [ext_resource type="Texture2D" uid="uid://btq6swo7uhu8o" path="res://Sprite/Golems_Free_Version/Golem_1/Blue/White_Swoosh_VFX/Golem_1_idle.png" id="4_t8n7u"]
+[ext_resource type="Texture2D" uid="uid://7tegvxss71o0" path="res://Sprite/Golems_Free_Version/Golem_1/Blue/White_Swoosh_VFX/Golem_1_walk.png" id="6_t8n7u"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ppem7"]
 atlas = ExtResource("1_hekrv")
@@ -149,6 +151,46 @@ region = Rect2(540, 0, 90, 64)
 atlas = ExtResource("4_t8n7u")
 region = Rect2(630, 0, 90, 64)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_j76p6"]
+atlas = ExtResource("6_t8n7u")
+region = Rect2(0, 0, 90, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hoek2"]
+atlas = ExtResource("6_t8n7u")
+region = Rect2(90, 0, 90, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tbf0r"]
+atlas = ExtResource("6_t8n7u")
+region = Rect2(180, 0, 90, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uef6r"]
+atlas = ExtResource("6_t8n7u")
+region = Rect2(270, 0, 90, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_53lcv"]
+atlas = ExtResource("6_t8n7u")
+region = Rect2(360, 0, 90, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wpfgo"]
+atlas = ExtResource("6_t8n7u")
+region = Rect2(450, 0, 90, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gfraq"]
+atlas = ExtResource("6_t8n7u")
+region = Rect2(540, 0, 90, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ghwpk"]
+atlas = ExtResource("6_t8n7u")
+region = Rect2(630, 0, 90, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qxexk"]
+atlas = ExtResource("6_t8n7u")
+region = Rect2(720, 0, 90, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oba6t"]
+atlas = ExtResource("6_t8n7u")
+region = Rect2(810, 0, 90, 64)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_j76p6"]
 animations = [{
 "frames": [{
@@ -248,7 +290,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"hurt",
-"speed": 5.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -278,14 +320,93 @@ animations = [{
 "loop": true,
 "name": &"idle",
 "speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j76p6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hoek2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tbf0r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uef6r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_53lcv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wpfgo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gfraq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ghwpk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qxexk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oba6t")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 7.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ra4i7"]
+size = Vector2(36, 39)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_j221p"]
+radius = 240.03333
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jnxeo"]
+radius = 22.022715
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ds3ho"]
+radius = 22.022715
+
 [node name="CaveEnemyGolem" type="CharacterBody2D" unique_id=660668677]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_ra4i7")
 
 [node name="GolemSprite2D" type="AnimatedSprite2D" parent="." unique_id=689208608]
 texture_filter = 1
+position = Vector2(0, -32)
 sprite_frames = SubResource("SpriteFrames_j76p6")
-animation = &"idle"
-frame_progress = 0.800992
+animation = &"walk"
+frame_progress = 0.9668792
 
 [node name="GolemShape2D" type="CollisionShape2D" parent="." unique_id=1573356902]
+position = Vector2(0, -19.5)
+shape = SubResource("RectangleShape2D_ra4i7")
+
+[node name="DetectionArea" type="Area2D" parent="." unique_id=1699034751]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea" unique_id=916892103]
+position = Vector2(0, -16)
+shape = SubResource("CircleShape2D_j221p")
+
+[node name="AttackArea" type="Area2D" parent="." unique_id=1201282493]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea" unique_id=106682985]
+position = Vector2(0, -17)
+shape = SubResource("CircleShape2D_jnxeo")
+
+[node name="Hurtbox" type="Area2D" parent="." unique_id=1110301390 groups=["enemy_hurtbox"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=1517248816]
+position = Vector2(0, -17)
+shape = SubResource("CircleShape2D_ds3ho")
+
+[node name="EdgeDetector" type="RayCast2D" parent="." unique_id=888697849]
+target_position = Vector2(0, 30)
+
+[connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]

@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://cooqedlk6ml0k"]
+
+[ext_resource type="Script" uid="uid://td2bfcrefsn4" path="res://bat_bullet.gd" id="1_d3mdb"]
+[ext_resource type="Texture2D" uid="uid://csgeorlu1vuh7" path="res://Free/Demo/Coin.png" id="2_x7dov"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_s3inm"]
+radius = 5.0
+
+[node name="BatBullet" type="Area2D" unique_id=1864128504]
+position = Vector2(28, 18)
+collision_layer = 0
+collision_mask = 3
+script = ExtResource("1_d3mdb")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=242569144]
+scale = Vector2(1.1, 0.8333334)
+texture = ExtResource("2_x7dov")
+hframes = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2046264810]
+shape = SubResource("CircleShape2D_s3inm")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="." unique_id=379657417]
+rect = Rect2(-5, -5, 10, 10)
+enable_node_path = NodePath("../CollisionShape2D")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

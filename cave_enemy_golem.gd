@@ -3,17 +3,18 @@ extends CharacterBody2D
 # ==========================================
 # 1. VARIABEL SETTINGS
 # ==========================================
-@export var speed = 150.0
+@export var speed = 100.0
 @export var wander_speed = 50.0 
 @export var wander_range = 100.0 
 @export var detection_range = 300.0
 @export var attack_range = 50.0
-@export var health = 3
+@export var health = 6
 
 # ==========================================
 # 2. REFERENSI NODE & STATE
 # ==========================================
-@onready var sprite = $ForestSprite2D
+@onready var sprite = $GolemSprite2D
+@onready var edge_detector = $EdgeDetector
 
 var player = null
 var is_attacking = false
@@ -48,6 +49,8 @@ func _physics_process(delta):
 	
 	if not is_on_floor():
 		velocity += get_gravity() * delta
+		
+	edge_detector.position.x = -20 if sprite.flip_h else 20
 
 	# Logika AI Musuh
 	if player:
@@ -77,20 +80,20 @@ func wander_behavior(delta):
 		pick_random_wander()
 
 	if wander_direction != 0:
-		# Hitung jarak musuh saat ini dari titik awal
 		var current_distance = global_position.x - start_position.x
 		
-		# Jika terlalu jauh ke kiri, paksa balik kanan
-		if current_distance < -wander_range and wander_direction == -1:
+		# --- CEK JURANG SAAT PATROLI ---
+		if not edge_detector.is_colliding() and is_on_floor():
+			wander_direction *= -1 
+		elif current_distance < -wander_range and wander_direction == -1:
 			wander_direction = 1
-		# Jika terlalu jauh ke kanan, paksa balik kiri
 		elif current_distance > wander_range and wander_direction == 1:
 			wander_direction = -1
 
 		velocity.x = wander_direction * wander_speed
 		if not is_attacking and not is_hurt:
-			sprite.play("run") # Ganti ke "walk" jika kamu punya animasinya
-			sprite.flip_h = wander_direction > 0
+			sprite.play("walk")
+			sprite.flip_h = wander_direction < 0
 	else:
 		# Jika sedang memilih aksi diam
 		velocity.x = move_toward(velocity.x, 0, speed)
@@ -109,10 +112,15 @@ func pick_random_wander():
 func chase_player():
 	if is_attacking or is_hurt: return
 	
+	if not edge_detector.is_colliding() and is_on_floor():
+		velocity.x = 0
+		sprite.play("idle") 
+		return
+	
 	var direction = (player.global_position - global_position).normalized()
 	velocity.x = direction.x * speed
-	sprite.play("run")
-	sprite.flip_h = direction.x > 0
+	sprite.play("walk")
+	sprite.flip_h = direction.x < 0
 
 func attack():
 	if is_attacking or is_hurt: return
@@ -121,7 +129,7 @@ func attack():
 	velocity.x = 0
 	
 	if player:
-		sprite.flip_h = player.global_position.x > global_position.x
+		sprite.flip_h = player.global_position.x < global_position.x
 
 	# 1. MULAI ANIMASI SERANGAN
 	sprite.play("attack")
@@ -140,7 +148,7 @@ func attack():
 	await sprite.animation_finished
 	
 	# 5. JEDA SEBELUM BISA NYERANG LAGI (COOLDOWN)
-	await get_tree().create_timer(0.5).timeout 
+	await get_tree().create_timer(1).timeout 
 	is_attacking = false
 
 # ==========================================
@@ -153,7 +161,7 @@ func take_damage(amount):
 	is_hurt = true
 	
 	velocity.y = -100
-	velocity.x = 150 if sprite.flip_h else -150
+	velocity.x = 50 if sprite.flip_h else -50
 	
 	sprite.play("hurt")
 	await sprite.animation_finished

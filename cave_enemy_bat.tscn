@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://bu06sbibjwony"]
 
+[ext_resource type="Script" uid="uid://dplhkm6bpaivf" path="res://cave_enemy_bat.gd" id="1_rn0xs"]
 [ext_resource type="Texture2D" uid="uid://qislg4rwv7h0" path="res://Sprite/DarkFantasyEnemies_FREE/Bat/Bat with VFX/Bat-Attack1.png" id="1_v63b5"]
 [ext_resource type="Texture2D" uid="uid://1i68plivdvh1" path="res://Sprite/DarkFantasyEnemies_FREE/Bat/Bat with VFX/Bat-Attack2.png" id="2_rn0xs"]
 [ext_resource type="Texture2D" uid="uid://cttm8mbfa644l" path="res://Sprite/DarkFantasyEnemies_FREE/Bat/Bat with VFX/Bat-Die.png" id="3_gl4mx"]
@@ -556,13 +557,46 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_v63b5"]
+radius = 17.117243
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rn0xs"]
+radius = 240.03333
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gl4mx"]
+radius = 22.022715
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fjo3o"]
+radius = 22.022715
+
 [node name="CaveEnemyBat" type="CharacterBody2D" unique_id=570718503]
+script = ExtResource("1_rn0xs")
 
 [node name="BatSprite2D" type="AnimatedSprite2D" parent="." unique_id=462822483]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_717of")
-animation = &"wake"
-frame = 15
-frame_progress = 1.0
+animation = &"sleep"
+frame_progress = 0.06480866
 
 [node name="BatShape2D" type="CollisionShape2D" parent="." unique_id=154744915]
+shape = SubResource("CircleShape2D_v63b5")
+
+[node name="DetectionArea" type="Area2D" parent="." unique_id=207341008]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea" unique_id=513472488]
+shape = SubResource("CircleShape2D_rn0xs")
+
+[node name="AttackArea" type="Area2D" parent="." unique_id=1333539703]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea" unique_id=913348601]
+shape = SubResource("CircleShape2D_gl4mx")
+
+[node name="Hurtbox" type="Area2D" parent="." unique_id=80443472 groups=["enemy_hurtbox"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=6818955]
+shape = SubResource("CircleShape2D_fjo3o")
+
+[connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]
