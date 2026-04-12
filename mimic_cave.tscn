@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://4tbn6ynqmk4j"]
+
+[ext_resource type="Script" uid="uid://vtb1i855jfjb" path="res://mimic_cave.gd" id="1_iktru"]
+[ext_resource type="Texture2D" uid="uid://dfkscavmbgme1" path="res://Sprite/Mimic Enemy Asset Pack/Mimics/Backpack Closed.png" id="1_xvx6n"]
+[ext_resource type="Texture2D" uid="uid://5kwc71016hgu" path="res://Sprite/Mimic Enemy Asset Pack/Mimics/Backpack Mimic 1.png" id="2_iktru"]
+[ext_resource type="Texture2D" uid="uid://c05sub0fy0wu7" path="res://Sprite/Mimic Enemy Asset Pack/Mimics/Backpack Mimic 2.png" id="3_mnq5f"]
+[ext_resource type="Texture2D" uid="uid://dnja4l1nq12cy" path="res://Sprite/Mimic Enemy Asset Pack/Mimics/Backpack Mimic 3.png" id="4_n1dbs"]
+[ext_resource type="Texture2D" uid="uid://dosc2nx85mt8" path="res://Sprite/Mimic Enemy Asset Pack/Mimics/Backpack Mimic Dead.png" id="5_1xxor"]
+[ext_resource type="Texture2D" uid="uid://dhse26lpyw6my" path="res://Sprite/Mimic Enemy Asset Pack/Mimics/Backpack Open.png" id="6_iioce"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3fpl3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_xvx6n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_iktru")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_mnq5f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_n1dbs")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_1xxor")
+}],
+"loop": true,
+"name": &"dead",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_iioce")
+}],
+"loop": true,
+"name": &"open",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b7hwq"]
+size = Vector2(27, 19)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xvx6n"]
+size = Vector2(27, 19)
+
+[node name="mimic_cave" type="CharacterBody2D" unique_id=1326523851]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_iktru")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=943094014]
+sprite_frames = SubResource("SpriteFrames_3fpl3")
+animation = &"attack"
+autoplay = "attack"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1057158085]
+position = Vector2(1.5, 5.5)
+shape = SubResource("RectangleShape2D_b7hwq")
+
+[node name="Hurtbox" type="Area2D" parent="." unique_id=1860274577 groups=["enemy_hurtbox"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=499007645]
+position = Vector2(1.5, 5.5)
+shape = SubResource("RectangleShape2D_xvx6n")

@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://be2ihv8kb2y2p"]
+
+[ext_resource type="Script" uid="uid://cnnembatb5u28" path="res://item_cave.gd" id="1_jgopc"]
+[ext_resource type="Texture2D" uid="uid://dmvms88jsn2tp" path="res://Sprite/pixel items3.png" id="2_fxblh"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xu63a"]
+
+[node name="item_cave" type="Area2D" unique_id=1279685992]
+script = ExtResource("1_jgopc")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=941814524]
+texture = ExtResource("2_fxblh")
+region_enabled = true
+region_rect = Rect2(193.33318, 161.29823, 29.661621, 29.661636)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=10228165]
+shape = SubResource("CircleShape2D_xu63a")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
