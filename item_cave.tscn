@@ -6,6 +6,8 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_xu63a"]
 
 [node name="item_cave" type="Area2D" unique_id=1279685992]
+collision_layer = 0
+collision_mask = 2
 script = ExtResource("1_jgopc")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=941814524]
