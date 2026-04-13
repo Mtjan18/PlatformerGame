@@ -1,6 +1,6 @@
+# pintu_masuk.gd (Diletakkan di Hutan)
 extends Area2D
 
 func _on_body_entered(body):
-	get_tree().change_scene_to_file("res://root.tscn")
-	pass
-	
+	if body.name == "Player":
+		get_tree().change_scene_to_file("res://root.tscn")

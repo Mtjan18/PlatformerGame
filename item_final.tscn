@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://xyxgcmyewp7a"]
 
 [ext_resource type="Texture2D" uid="uid://cdnn3mqxt4rte" path="res://Sprite/pixel items2.png" id="1_8kob5"]
-[ext_resource type="Script" uid="uid://c6cad1pk4shvc" path="res://item_final.gd" id="1_15f6b"]
+[ext_resource type="Script" uid="uid://cnnembatb5u28" path="res://item_cave.gd" id="1_15f6b"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_15f6b"]
 

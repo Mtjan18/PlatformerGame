@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://chiu3mgnllu5t"]
 
 [ext_resource type="Texture2D" uid="uid://dixf5dtkcu3rw" path="res://Sprite/pixel items1.png" id="1_0bn3f"]
-[ext_resource type="Script" uid="uid://belr2t3kxtct0" path="res://item_1.gd" id="1_ogoeu"]
+[ext_resource type="Script" uid="uid://cnnembatb5u28" path="res://item_cave.gd" id="1_ogoeu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ogoeu"]
 radius = 12.0

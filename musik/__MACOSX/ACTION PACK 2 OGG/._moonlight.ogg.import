@@ -1,0 +1,18 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cudmoxplq2ndj"
+valid=false
+
+[deps]
+
+source_file="res://musik/__MACOSX/ACTION PACK 2 OGG/._moonlight.ogg"
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

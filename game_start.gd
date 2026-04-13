@@ -2,6 +2,8 @@ extends Control
 	
 
 func _on_mulai_game_pressed() -> void:
+	$AudioStreamPlayer.stop()
+	
 	$AnimationPlayer.play("fade_out")
 	await $AnimationPlayer.animation_finished
 	get_tree().change_scene_to_file("res://HUTAN.tscn")

@@ -1,6 +1,6 @@
 extends Area2D
 
-var speed = 250.0
+var speed = 150.0
 var direction = Vector2.LEFT # Default nembak ke kiri
 
 func _physics_process(delta):

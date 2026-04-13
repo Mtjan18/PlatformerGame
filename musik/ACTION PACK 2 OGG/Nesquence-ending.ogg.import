@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://br7uv4e53u5b5"
+path="res://.godot/imported/Nesquence-ending.ogg-644f9e7a58875c6b967cd9414bef6ab1.oggvorbisstr"
+
+[deps]
+
+source_file="res://musik/ACTION PACK 2 OGG/Nesquence-ending.ogg"
+dest_files=["res://.godot/imported/Nesquence-ending.ogg-644f9e7a58875c6b967cd9414bef6ab1.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

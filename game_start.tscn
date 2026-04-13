@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b625v1vnkjmh3" path="res://game_start.gd" id="1_dpf5s"]
 [ext_resource type="Texture2D" uid="uid://ck5pm14o73dq7" path="res://Background_0.png" id="1_sn725"]
+[ext_resource type="AudioStream" uid="uid://bjid6s00qfodi" path="res://musik/ACTION PACK 2 OGG/outrunner.ogg" id="3_26ewq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
 content_margin_left = 32.0
@@ -333,6 +334,11 @@ color = Color(1, 1, 1, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=796122342]
 libraries/ = SubResource("AnimationLibrary_eh38o")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=909810347]
+stream = ExtResource("3_26ewq")
+volume_db = -5.0
+autoplay = true
 
 [connection signal="pressed" from="MenuPanel/MarginContainer/MenuOptions/MulaiGame" to="." method="_on_mulai_game_pressed"]
 [connection signal="pressed" from="MenuPanel/MarginContainer/MenuOptions/ButtonKeluar" to="." method="_on_button_keluar_pressed"]

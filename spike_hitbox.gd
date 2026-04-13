@@ -1,19 +1,16 @@
 extends Area2D
 
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
-
 func _on_body_entered(body: Node2D) -> void:
+	# Pastikan hanya Player yang terpengaruh
 	if body.name == "Player":
-		body.current_health = 0
-		body.update_health_ui()
-		body.die()
-	pass 
+		print("Player tertusuk!")
+		
+		# Cek apakah Player memiliki fungsi take_damage
+		if body.has_method("take_damage"):
+			# Pilihan A: Berikan damage besar agar langsung mati beranimasi
+			body.take_damage(99) 
+			
+
+func matikan_player():
+	# Ganti get_tree().reload_current_scene() dengan kode pindah scene ini:
+	get_tree().change_scene_to_file("res://game_over.tscn")

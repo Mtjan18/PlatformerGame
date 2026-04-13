@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dim8dtdgpxcp7"
+path="res://.godot/imported/warped vehicles.ogg-8c579e5e9e85a07219bfed7ec3a6366c.oggvorbisstr"
+
+[deps]
+
+source_file="res://musik/ACTION PACK 2 OGG/warped vehicles.ogg"
+dest_files=["res://.godot/imported/warped vehicles.ogg-8c579e5e9e85a07219bfed7ec3a6366c.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://c4l7884111iok"]
+[gd_scene format=3 uid="uid://bnxx4a36e4dr2"]
 
 [ext_resource type="Texture2D" uid="uid://ocj2nkknkug4" path="res://Free/Demo/Bat.png" id="1_pb2o4"]
 [ext_resource type="Script" uid="uid://c611jnqr0rqqw" path="res://bat.gd" id="2_vobq3"]
@@ -50,7 +50,7 @@ script = ExtResource("2_vobq3")
 bullet_scene = ExtResource("3_1tubu")
 
 [node name="Timer" type="Timer" parent="." unique_id=96635412]
-wait_time = 2.0
+wait_time = 6.0
 
 [node name="SpawnPoint" type="Marker2D" parent="." unique_id=65123600]
 position = Vector2(-3, 4)
